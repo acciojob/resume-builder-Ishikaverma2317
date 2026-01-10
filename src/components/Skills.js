@@ -9,17 +9,27 @@ function Skills() {
     <div>
       <h2>Add your Skills</h2>
 
-      <input name="skill" onChange={(e) => setSkill(e.target.value)} />
-      <input name="skill" />
-      <input name="skill" />
+      <input
+        name="skill"
+        value={skill}
+        onChange={(e) => setSkill(e.target.value)}
+      />
 
-      <button id="add_skill" onClick={() =>
-        dispatch({ type: "ADD_SKILL", payload: skill })
-      }>Add</button>
+      <button
+        id="add_skill"
+        onClick={() =>
+          dispatch({ type: "ADD_SKILL", payload: skill })
+        }
+      >
+        Add
+      </button>
 
-      <button id="delete_skill" onClick={() =>
-        dispatch({ type: "DELETE_SKILL" })
-      }>Delete</button>
+      <button
+        id="delete_skill"
+        onClick={() => dispatch({ type: "DELETE_SKILL" })}
+      >
+        Delete
+      </button>
     </div>
   );
 }

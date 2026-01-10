@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
 import Profile from "./Profile";
 import Education from "./Education";
 import Skills from "./Skills";
@@ -12,7 +13,7 @@ function App() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <>
       <h1>RESUME GENERATOR</h1>
 
       {page === 1 && <Profile />}
@@ -22,21 +23,32 @@ function App() {
       {page === 5 && <Social />}
       {page === 6 && <Resume />}
 
-      <button id="back" onClick={() => dispatch({ type: "BACK" })}>
-        Back
-      </button>
+      <div className="footer">
+        <Button
+          variant="contained"
+          id="back"
+          onClick={() => dispatch({ type: "BACK" })}
+        >
+          Back
+        </Button>
 
-      <button id="next" onClick={() => dispatch({ type: "NEXT" })}>
-        Next
-      </button>
+        <Button
+          variant="contained"
+          id="next"
+          onClick={() => dispatch({ type: "NEXT" })}
+        >
+          Next
+        </Button>
 
-      <button
-        id="save_continue"
-        onClick={() => dispatch({ type: "NEXT" })}
-      >
-        Save & Continue
-      </button>
-    </div>
+        <Button
+          variant="contained"
+          id="save_continue"
+          onClick={() => dispatch({ type: "NEXT" })}
+        >
+          Save & Continue
+        </Button>
+      </div>
+    </>
   );
 }
 
