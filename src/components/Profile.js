@@ -1,28 +1,28 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 
 function Profile() {
   const dispatch = useDispatch();
   const [data, setData] = useState({});
 
   return (
-    <>
-      <input name="fname" onChange={(e) => setData({ ...data, fname: e.target.value })} />
-      <input name="lname" onChange={(e) => setData({ ...data, lname: e.target.value })} />
-      <input name="phone" />
-      <input name="address" />
-      <input name="url" />
+    <div>
+      <h2>Add your profile details</h2>
 
-      <button
-        onClick={() =>
-          dispatch({ type: "SAVE_PROFILE", payload: data })
-        }
-      >
+      {["fname", "lname", "phone", "address", "url"].map((f) => (
+        <input
+          key={f}
+          name={f}
+          onChange={(e) =>
+            setData({ ...data, [f]: e.target.value })
+          }
+        />
+      ))}
+
+      <button onClick={() => dispatch({ type: "SAVE_PROFILE", payload: data })}>
         Save
       </button>
-    </>
+    </div>
   );
 }
 

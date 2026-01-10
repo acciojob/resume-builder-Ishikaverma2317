@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import Profile from "./Profile";
 import Education from "./Education";
 import Skills from "./Skills";
@@ -9,11 +8,13 @@ import Social from "./Social";
 import Resume from "./Resume";
 
 function App() {
-  const page = useSelector((state) => state.page);
+  const page = useSelector((state) => state.currentPage);
   const dispatch = useDispatch();
 
   return (
     <div>
+      <h1>RESUME GENERATOR</h1>
+
       {page === 1 && <Profile />}
       {page === 2 && <Education />}
       {page === 3 && <Skills />}
