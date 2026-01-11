@@ -1,40 +1,28 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-function Education() {
+export default function Education() {
   const dispatch = useDispatch();
-  const [edu, setEdu] = useState({});
+  const [data, setData] = useState({
+    courseName: "",
+    completionYear: "",
+    college: "",
+    percentage: ""
+  });
+
+  const add = () => {
+    dispatch({ type: "ADD_EDUCATION", payload: data });
+  };
 
   return (
     <div>
-      <h2>Add your Education Details</h2>
+      <input name="courseName" onChange={e => setData({ ...data, courseName: e.target.value })} />
+      <input name="completionYear" onChange={e => setData({ ...data, completionYear: e.target.value })} />
+      <input name="college" onChange={e => setData({ ...data, college: e.target.value })} />
+      <input name="percentage" onChange={e => setData({ ...data, percentage: e.target.value })} />
 
-      {["courseName", "completionYear", "college", "percentage"].map((f) => (
-        <input key={f} name={f} onChange={(e) =>
-          setEdu({ ...edu, [f]: e.target.value })
-        } />
-      ))}
-
-      <button id="add_education" onClick={() =>
-        dispatch({ type: "ADD_EDUCATION", payload: edu })
-      }>Add</button>
-
-      <button id="delete" onClick={() =>
-        dispatch({ type: "DELETE_EDUCATION" })
-      }>Delete</button>
-
-      <Button
-  variant="contained"
-  color="primary"
->
-  Save Education
-</Button>
-
+      <button id="add_education" onClick={add}>Add</button>
+      <button id="delete">Delete</button>
     </div>
-
-    
   );
 }
-
-
-export default Education;

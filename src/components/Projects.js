@@ -1,52 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-function Projects() {
+export default function Projects() {
   const dispatch = useDispatch();
-  const [proj, setProj] = useState({});
+  const [data, setData] = useState({ projectName:"", techStack:"", description:"" });
 
   return (
     <div>
-      <h2>Add your Mini Projects</h2>
+      <input name="projectName" onChange={e => setData({ ...data, projectName: e.target.value })} />
+      <input name="techStack" onChange={e => setData({ ...data, techStack: e.target.value })} />
+      <textarea name="description" onChange={e => setData({ ...data, description: e.target.value })} />
 
-      <input
-        name="projectName"
-        onChange={(e) =>
-          setProj({ ...proj, projectName: e.target.value })
-        }
-      />
-
-      <input
-        name="techStack"
-        onChange={(e) =>
-          setProj({ ...proj, techStack: e.target.value })
-        }
-      />
-
-      <textarea
-        name="description"
-        onChange={(e) =>
-          setProj({ ...proj, description: e.target.value })
-        }
-      />
-
-      <button
-        id="add_project"
-        onClick={() =>
-          dispatch({ type: "ADD_PROJECT", payload: proj })
-        }
-      >
-        Add
-      </button>
-
-      <button
-        id="delete"
-        onClick={() => dispatch({ type: "DELETE_PROJECT" })}
-      >
-        Delete
-      </button>
+      <button id="add_project" onClick={() => dispatch({ type:"ADD_PROJECT", payload:data })}>Add</button>
+      <button id="delete">Delete</button>
     </div>
   );
 }
-
-export default Projects;

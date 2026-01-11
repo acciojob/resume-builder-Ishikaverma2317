@@ -7,15 +7,12 @@ import Projects from "./Projects";
 import Social from "./Social";
 
 export default function App() {
-  const page = useSelector(state => state.page);
+  const page = useSelector(s => s.page);
   const dispatch = useDispatch();
-
-  const next = () => dispatch({ type: "NEXT" });
-  const back = () => dispatch({ type: "BACK" });
 
   return (
     <div>
-      <h1>Resume Builder</h1>
+      <h1>RESUME GENERATOR</h1>
 
       {page === 1 && <Profile />}
       {page === 2 && <Education />}
@@ -23,10 +20,9 @@ export default function App() {
       {page === 4 && <Projects />}
       {page === 5 && <Social />}
 
-      {/* Cypress Footer */}
       <div className="makeStyles-footer-15">
-        <button id="back" className="MuiButton-contained" onClick={back}>Back</button>
-        <button id="next" className="MuiButton-contained" onClick={next}>Next</button>
+        <button id="back" className="MuiButton-contained" onClick={() => dispatch({ type:"BACK" })}>Back</button>
+        <button id="next" className="MuiButton-contained" onClick={() => dispatch({ type:"NEXT" })}>Next</button>
         <button id="save_continue" className="MuiButton-contained">Save</button>
       </div>
     </div>
