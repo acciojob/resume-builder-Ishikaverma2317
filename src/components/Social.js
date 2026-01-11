@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
+import {useDispatch} from "react-redux";
 
-function Social() {
-  return (
+function Social(){
+  const [s,setS]=useState("");
+  const dispatch=useDispatch();
+
+  return(
     <div>
-      <h2>Social</h2>
-      <input id="linkedin" placeholder="LinkedIn" />
-      <input id="github" placeholder="Github" />
+      <input name="Social" onChange={e=>setS(e.target.value)}/>
+      <button id="add_social" onClick={()=>dispatch({type:"ADD_SOCIAL",payload:s})}>Add</button>
     </div>
   );
 }

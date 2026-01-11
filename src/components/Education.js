@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function Education() {
+  const [edu, setEdu] = useState({});
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <h2>Education</h2>
-      <input id="degree" placeholder="Degree" />
-      <input id="college" placeholder="College" />
-      <input id="year" placeholder="Year" />
-      <button>Add</button>
+      <input name="courseName" onChange={e=>setEdu({...edu,courseName:e.target.value})}/>
+      <input name="completionYear" onChange={e=>setEdu({...edu,completionYear:e.target.value})}/>
+      <input name="college" onChange={e=>setEdu({...edu,college:e.target.value})}/>
+      <input name="percentage" onChange={e=>setEdu({...edu,percentage:e.target.value})}/>
+
+      <button id="add_education" onClick={()=>dispatch({type:"ADD_EDUCATION",payload:edu})}>Add</button>
+      <button id="delete">Delete</button>
     </div>
   );
 }
