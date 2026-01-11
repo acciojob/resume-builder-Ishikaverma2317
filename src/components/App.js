@@ -1,34 +1,26 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Profile from "./Profile";
-import Education from "./Education";
-import Skills from "./Skills";
-import Projects from "./Projects";
-import Social from "./Social";
-import Resume from "./Resume";
+import React, { useState } from "react";
+import Profile from "./components/Profile";
+import Education from "./components/Education";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Social from "./components/Social";
 
-function App() {
-  const page = useSelector((state) => state.page);
-  const dispatch = useDispatch();
+export default function App() {
+  const [page, setPage] = useState(0);
 
   return (
     <div>
       <h1>RESUME GENERATOR</h1>
 
-      {page === 1 && <Profile />}
-      {page === 2 && <Education />}
-      {page === 3 && <Skills />}
-      {page === 4 && <Projects />}
-      {page === 5 && <Social />}
-      {page === 6 && <Resume />}
+      {page === 0 && <Profile />}
+      {page === 1 && <Education />}
+      {page === 2 && <Skills />}
+      {page === 3 && <Projects />}
+      {page === 4 && <Social />}
 
-      <div>
-        {page > 1 && <button id="back" onClick={() => dispatch({ type: "BACK" })}>Back</button>}
-        {page < 6 && <button id="next" onClick={() => dispatch({ type: "NEXT" })}>Next</button>}
-        {page === 5 && <button id="save_continue" onClick={() => dispatch({ type: "NEXT" })}>Save & Continue</button>}
-      </div>
+      <button id="back" onClick={() => setPage(page - 1)}>Back</button>
+      <button id="next" onClick={() => setPage(page + 1)}>Next</button>
+      <button id="save_continue">Save</button>
     </div>
   );
 }
-
-export default App;
