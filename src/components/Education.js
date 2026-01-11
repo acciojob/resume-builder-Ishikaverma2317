@@ -22,8 +22,19 @@ function Education() {
       <button id="delete" onClick={() =>
         dispatch({ type: "DELETE_EDUCATION" })
       }>Delete</button>
+
+      <Button
+  variant="contained"
+  color="primary"
+>
+  Save Education
+</Button>
+
     </div>
+
+    
   );
 }
+
 
 export default Education;
