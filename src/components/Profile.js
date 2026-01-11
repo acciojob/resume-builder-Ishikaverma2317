@@ -1,11 +1,14 @@
-export default function Profile() {
+import React from "react";
+
+function Profile() {
   return (
     <div>
-      <input name="fname"/>
-      <input name="lname"/>
-      <input name="phone"/>
-      <input name="address"/>
-      <input name="url"/>
+      <h2>Profile</h2>
+      <input id="name" placeholder="Name" />
+      <input id="email" placeholder="Email" />
+      <input id="phone" placeholder="Phone" />
     </div>
   );
 }
+
+export default Profile;
