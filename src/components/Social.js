@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@material-ui/core/Button";
 
 function Social() {
   const [s, setS] = useState("");
@@ -10,13 +11,18 @@ function Social() {
     <div>
       <h2>Add your Social Media Links</h2>
 
-      <input name="Social" onChange={(e) => setS(e.target.value)} />
-      <button id="add_social" onClick={() => dispatch({ type: "ADD_SOCIAL", payload: s })}>
-        Add
-      </button>
+      <input name="Social" />
+      <div className="makeStyles-footer-15">
+        <Button
+          variant="contained"
+          onClick={() => dispatch({ type: "ADD_SOCIAL", payload: s })}
+        >
+          Add
+        </Button>
+      </div>
 
       {list.map((s, i) => (
-        <div key={i}>{i + 1}</div>
+        <input key={i} value={i + 1} readOnly />
       ))}
     </div>
   );

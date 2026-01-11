@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@material-ui/core/Button";
 
 function Education() {
   const [edu, setEdu] = useState({});
@@ -15,12 +16,18 @@ function Education() {
       <input name="college" onChange={(e) => setEdu({ ...edu, college: e.target.value })} />
       <input name="percentage" onChange={(e) => setEdu({ ...edu, percentage: e.target.value })} />
 
-      <button id="add_education" onClick={() => dispatch({ type: "ADD_EDUCATION", payload: edu })}>
-        Add
-      </button>
+      <div className="makeStyles-footer-15">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => dispatch({ type: "ADD_EDUCATION", payload: edu })}
+        >
+          Add
+        </Button>
+      </div>
 
       {list.map((e, i) => (
-        <div key={i}>{i + 1}</div>
+        <input key={i} value={i + 1} readOnly />
       ))}
     </div>
   );

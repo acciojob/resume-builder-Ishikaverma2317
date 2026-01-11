@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@material-ui/core/Button";
 
 function Skills() {
   const [skill, setSkill] = useState("");
@@ -10,13 +11,18 @@ function Skills() {
     <div>
       <h2>Add your Skills</h2>
 
-      <input name="skill" onChange={(e) => setSkill(e.target.value)} />
-      <button id="add_skill" onClick={() => dispatch({ type: "ADD_SKILL", payload: skill })}>
-        Add
-      </button>
+      <input name="skill" />
+      <div className="makeStyles-footer-15">
+        <Button
+          variant="contained"
+          onClick={() => dispatch({ type: "ADD_SKILL", payload: skill })}
+        >
+          Add
+        </Button>
+      </div>
 
       {list.map((s, i) => (
-        <div key={i}>{i + 1}</div>
+        <input key={i} value={i + 1} readOnly />
       ))}
     </div>
   );

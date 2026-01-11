@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@material-ui/core/Button";
 
 function Projects() {
   const [p, setP] = useState({});
@@ -12,14 +13,19 @@ function Projects() {
 
       <input name="projectName" onChange={(e) => setP({ ...p, projectName: e.target.value })} />
       <input name="techStack" onChange={(e) => setP({ ...p, techStack: e.target.value })} />
-      <input name="description" onChange={(e) => setP({ ...p, description: e.target.value })} />
+      <textarea name="description" onChange={(e) => setP({ ...p, description: e.target.value })} />
 
-      <button id="add_project" onClick={() => dispatch({ type: "ADD_PROJECT", payload: p })}>
-        Add
-      </button>
+      <div className="makeStyles-footer-15">
+        <Button
+          variant="contained"
+          onClick={() => dispatch({ type: "ADD_PROJECT", payload: p })}
+        >
+          Add
+        </Button>
+      </div>
 
       {list.map((p, i) => (
-        <div key={i}>{i + 1}</div>
+        <input key={i} value={i + 1} readOnly />
       ))}
     </div>
   );
